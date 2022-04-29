@@ -2,18 +2,19 @@ package com.example.libraryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-public class LoginActivity extends AppCompatActivity {
+public class GirisActivity extends AppCompatActivity {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_login);
+        setContentView(R.layout.activity_giris);
 
         Button btn_giris = findViewById(R.id.giris_btn);
         EditText KullaniciAdi=findViewById(R.id.username);
@@ -29,7 +30,7 @@ public class LoginActivity extends AppCompatActivity {
                 String kad=KullaniciAdi.getText().toString();
                 String sifre=Sifre.getText().toString();
 
-                SQLLite db = new SQLLite(LoginActivity.this);
+                SQLLite db = new SQLLite(GirisActivity.this);
                 int sonuc=db.KullaniciKontrol(kad,sifre);//eğer kullanıcı var ise 1 dönecek yok ise 0
                 if (sonuc==1)
                 {
@@ -47,12 +48,10 @@ public class LoginActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
 
-                //TODO kayit olma ekranı yapılınca aktif edilecek
-
-                //Intent i = new Intent(LoginActivity.this, KayitOlActivity.class);
-                //startActivity(i);
-                //finish();
-                Toast.makeText(getApplicationContext(), "Kayıt ol ekranı açılıyor", Toast.LENGTH_SHORT).show();
+                Intent i = new Intent(GirisActivity.this, KayitOlActivity.class);
+                startActivity(i);
+                finish();
+                Toast.makeText(getApplicationContext(), "Kayıt olma ekranı açılıyor", Toast.LENGTH_SHORT).show();
             }
         });
     }

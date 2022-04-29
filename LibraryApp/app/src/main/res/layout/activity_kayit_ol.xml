@@ -1,0 +1,118 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".KayitOlActivity"
+    android:background="@color/arkaplan">
+
+    <ImageView
+        android:id="@+id/kayit_image"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="75dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:srcCompat="@drawable/sign" />
+
+    <TextView
+        android:id="@+id/kayit_txt"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:gravity="center"
+        android:text="@string/kayit_txt"
+        android:textColor="@color/yesil"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit_image" />
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_kullanici"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="50dp"
+        android:background="@color/yesil"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/kayit_txt">
+
+        <EditText
+            android:id="@+id/username_kayit"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:autofillHints="username"
+            android:background="@color/arkaplanacik"
+            android:hint="@string/hint_username"
+            android:imeOptions="actionNext"
+            android:paddingStart="20dp"
+            android:singleLine="true"
+            android:textSize="20sp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_Sifre"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/yesil"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_kullanici">
+
+        <EditText
+            android:id="@+id/password_kayit"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:background="@color/arkaplanacik"
+            android:hint="@string/hint_password"
+            android:inputType="textPassword"
+            android:ems="15"
+            android:paddingStart="20dp"/>
+
+    </androidx.cardview.widget.CardView>
+
+    <androidx.cardview.widget.CardView
+        android:id="@+id/cardView_Sifre_onaylama"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center"
+        android:layout_marginTop="20dp"
+        android:background="@color/yesil"
+        app:cardCornerRadius="25dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_Sifre">
+
+        <EditText
+            android:id="@+id/password_onaylama"
+            android:layout_width="320dp"
+            android:layout_height="50dp"
+            android:background="@color/arkaplanacik"
+            android:ems="15"
+            android:hint="@string/hint_passwordConfirm"
+            android:inputType="textPassword"
+            android:paddingStart="20dp" />
+
+    </androidx.cardview.widget.CardView>
+
+    <Button
+        android:id="@+id/btn_kayitOl"
+        style="@style/giris_kayit_butonu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/cardView_Sifre_onaylama"
+        android:layout_marginTop="40dp"/>
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -1,8 +1,11 @@
 <resources>
     <string name="app_name">LibraryApp</string>
     <string name="hint_username">Kullanıcı Adı</string>
-    <string name="giris_txt"> Giriş Yapma Ekranına HOŞGELDİNİZ</string>
+    <string name="giris_txt">Giriş Yapma Ekranına HOŞGELDİNİZ</string>
+    <string name="kayit_txt">Kayıt Olma Ekranına HOŞGELDİNİZ</string>
     <string name="hint_password">Şifre</string>
+    <string name="hint_passwordConfirm">Şifre Onaylama</string>
     <string name="buton_giris">Giriş</string>
+    <string name="buton_kayitOl">Kayıt Ol</string>
     <string name="buton_kayit">Hesabınız mı yok? <b>Hemen kayıt olun</b> </string>
 </resources>
