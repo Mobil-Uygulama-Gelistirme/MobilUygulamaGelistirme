@@ -107,6 +107,7 @@
 
     <Button
         android:id="@+id/btn_kayitOl"
+        android:text="@string/buton_kayitOl"
         style="@style/giris_kayit_butonu"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

@@ -5,7 +5,7 @@
     <string name="kayit_txt">Kayıt Olma Ekranına HOŞGELDİNİZ</string>
     <string name="hint_password">Şifre</string>
     <string name="hint_passwordConfirm">Şifre Onaylama</string>
-    <string name="buton_giris">Giriş</string>
+    <string name="buton_giris">Giriş Yap</string>
     <string name="buton_kayitOl">Kayıt Ol</string>
     <string name="buton_kayit">Hesabınız mı yok? <b>Hemen kayıt olun</b> </string>
 </resources>

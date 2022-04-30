@@ -1,5 +1,6 @@
 package com.example.libraryapp;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -39,8 +40,7 @@ public class SQLLite extends SQLiteOpenHelper
         int sonuc=0;
         try
         {
-            //TODO Kayıt ol ekranı tamamlandıktan sonra çalışıyor mu diye deneyelim
-            String selectQuery = "SELECT  * FROM " + TABLE_USERS + " Where " + ROW_USERNAME + "="+ KullaniciAdi + " and " + ROW_SIFRE + "=" + Sifre;
+            String selectQuery = "SELECT  * FROM " + TABLE_USERS + " Where " + ROW_USERNAME + "='"+ KullaniciAdi + "' and " + ROW_SIFRE + "='" + Sifre+"'";
             Cursor cursor = db.rawQuery(selectQuery,null);
             cursor.moveToFirst();
             if (cursor.getCount()>0)
@@ -48,6 +48,23 @@ public class SQLLite extends SQLiteOpenHelper
             cursor.close();
         }catch (Exception e){
             sonuc=-1;
+        }
+        db.close();
+        return sonuc;
+    }
+
+    public int KullaniciEkle(String KullaniciAdi,String Sifre)
+    {
+        int sonuc=0;
+        SQLiteDatabase db = this.getWritableDatabase();
+        try
+        {
+            ContentValues cv = new ContentValues();
+            cv.put(ROW_USERNAME, KullaniciAdi);
+            cv.put(ROW_SIFRE,Sifre);
+            db.insert(TABLE_USERS, null,cv);
+            sonuc=1;
+        }catch (Exception e){
         }
         db.close();
         return sonuc;
