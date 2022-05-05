@@ -24,7 +24,6 @@ public class GirisActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View view) {
-                //TODO Kitap listesi activity'si yapılınca aktif edilecek
 
                 String kad=KullaniciAdi.getText().toString();
                 String sifre=Sifre.getText().toString();
@@ -36,7 +35,6 @@ public class GirisActivity extends AppCompatActivity {
                     Intent i = new Intent(GirisActivity.this, MainActivity.class);
                     i.putExtra("kullaniciAd", kad);
 
-                    Toast.makeText(getApplicationContext(), "Giriş yapılıyor", Toast.LENGTH_SHORT).show();
                     startActivity(i);
                     finish();
                 }
@@ -51,7 +49,6 @@ public class GirisActivity extends AppCompatActivity {
 
                 Intent i = new Intent(GirisActivity.this, KayitOlActivity.class);
                 startActivity(i);
-                Toast.makeText(getApplicationContext(), "Kayıt olma ekranı açılıyor", Toast.LENGTH_SHORT).show();
             }
         });
     }
