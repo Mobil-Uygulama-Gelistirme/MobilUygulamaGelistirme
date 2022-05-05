@@ -8,4 +8,8 @@
     <string name="buton_giris">Giriş Yap</string>
     <string name="buton_kayitOl">Kayıt Ol</string>
     <string name="buton_kayit">Hesabınız mı yok? <b>Hemen kayıt olun</b> </string>
+    <string name="kitaplar">Kitaplar</string>
+    <string name="kitap_ayrinti">Ayrıntılar</string>
+    <string name="favoriler">Favoriler</string>
+    <string name="kitap_ara_txt">Arama yapmak istediğiniz kitabın adını giriniz.</string>
 </resources>

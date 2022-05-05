@@ -33,10 +33,12 @@ public class GirisActivity extends AppCompatActivity {
                 int sonuc=db.KullaniciKontrol(kad,sifre);//eğer kullanıcı var ise 1 dönecek yok ise 0
                 if (sonuc==1)
                 {
+                    Intent i = new Intent(GirisActivity.this, MainActivity.class);
+                    i.putExtra("kullaniciAd", kad);
+
                     Toast.makeText(getApplicationContext(), "Giriş yapılıyor", Toast.LENGTH_SHORT).show();
-                    //Intent i = new Intent(LoginActivity.this, KitapListesiActivity.class);
-                    //startActivity(i);
-                    //finish();
+                    startActivity(i);
+                    finish();
                 }
                 else
                     Toast.makeText(getApplicationContext(), "Böyle bir kullanıcı bulunamadı. Hesabınız yok ise kayıt olunuz.", Toast.LENGTH_SHORT).show();

@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/kitaplar"
+        android:title="@string/kitaplar"
+        android:icon="@drawable/ic_baseline_book"/>
+    <item
+        android:id="@+id/kitap_ayrinti"
+        android:title="@string/kitap_ayrinti"
+        android:icon="@drawable/ic_baseline_menu_book"/>
+    <item
+        android:id="@+id/favoriler"
+        android:title="@string/favoriler"
+        android:icon="@drawable/ic_baseline_favorite"/>
+</menu>
