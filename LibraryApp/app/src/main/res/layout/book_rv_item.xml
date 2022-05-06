@@ -7,6 +7,7 @@
     android:layout_margin="4dp"
     app:cardCornerRadius="8dp"
     app:cardElevation="8dp"
+    android:id="@+id/kitaplar"
     app:cardBackgroundColor="@color/arkaplanacik">
 
     <RelativeLayout
@@ -57,6 +58,15 @@
             android:text="date"
             android:textColor="@color/black"
             android:textSize="13sp" />
+
+
+        <ImageButton
+            android:id="@+id/idBtnFavorite"
+            android:layout_width="50dp"
+            android:layout_height="50dp"
+            android:layout_below="@+id/idTVPageCount"
+            android:layout_centerInParent="true"
+            android:src="@drawable/ic_baseline_favorite" />
 
     </RelativeLayout>
 

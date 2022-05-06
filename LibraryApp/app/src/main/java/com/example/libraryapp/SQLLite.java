@@ -6,6 +6,8 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
 
+import java.util.ArrayList;
+
 public class SQLLite extends SQLiteOpenHelper
 {
     private static final String DATABASE_NAME = "KutuphaneDB";
@@ -14,7 +16,6 @@ public class SQLLite extends SQLiteOpenHelper
     private static final String ROW_USERNAME = "KullaniciAdi";
     private static final String ROW_SIFRE = "Sifre";
     private static final int DATABASE_VERSION = 1;
-
     public SQLLite(Context context) {
         super(context, DATABASE_NAME, null, DATABASE_VERSION);
     }

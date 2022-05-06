@@ -1,11 +1,15 @@
 package com.example.libraryapp;
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -16,11 +20,10 @@ import java.util.ArrayList;
 
 public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder> {
 
-    // creating variables for arraylist and context.
     private ArrayList<BookInfo> bookInfoArrayList;
     private Context mcontext;
+    private SharedPreferences preferences;
 
-    // creating constructor for array list and context.
     public BookAdapter(ArrayList<BookInfo> bookInfoArrayList, Context mcontext) {
         this.bookInfoArrayList = bookInfoArrayList;
         this.mcontext = mcontext;
@@ -29,29 +32,21 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
     @NonNull
     @Override
     public BookViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        // inflating our layout for item of recycler view item.
         View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.book_rv_item, parent, false);
         return new BookViewHolder(view);
     }
 
     @Override
     public void onBindViewHolder(@NonNull BookViewHolder holder, int position) {
-
-        // inside on bind view holder method we are
-        // setting ou data to each UI component.
         BookInfo bookInfo = bookInfoArrayList.get(position);
         holder.nameTV.setText(bookInfo.getTitle());
         holder.publisherTV.setText(bookInfo.getPublisher());
-        holder.pageCountTV.setText("No of Pages : " + bookInfo.getPageCount());
+        holder.pageCountTV.setText("Sayfa Sayısı : " + bookInfo.getPageCount());
         holder.dateTV.setText(bookInfo.getPublishedDate());
 
-
-        // below line is use to add on click listener for our item of recycler view.
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                // inside on click listener method we are calling a new activity
-                // and passing all the data of that item in next intent.
                 Intent i = new Intent(mcontext, BookDetailsActivity.class);
                 i.putExtra("title", bookInfo.getTitle());
                 i.putExtra("subtitle", bookInfo.getSubtitle());
@@ -61,25 +56,29 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
                 i.putExtra("description", bookInfo.getDescription());
                 i.putExtra("pageCount", bookInfo.getPageCount());
 
-                // after passing that data we are
-                // starting our new intent.
                 mcontext.startActivity(i);
+            }
+        });
+
+        //preferences = mcontext.getSharedPreferences("com.example.libraryapp", Context.MODE_PRIVATE);
+        //String data = preferences.getString("kullaniciAd", "Bilinmiyor");
+
+        holder.favoriteBTN.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Toast.makeText(mcontext.getApplicationContext(), bookInfo.getTitle(),Toast.LENGTH_SHORT).show();
             }
         });
     }
 
     @Override
     public int getItemCount() {
-        // inside get item count method we
-        // are returning the size of our array list.
         return bookInfoArrayList.size();
     }
 
     public class BookViewHolder extends RecyclerView.ViewHolder {
-        // below line is use to initialize
-        // our text view and image views.
         TextView nameTV, publisherTV, pageCountTV, dateTV;
-        ImageView bookIV;
+        ImageButton favoriteBTN;
 
         public BookViewHolder(View itemView) {
             super(itemView);
@@ -87,6 +86,7 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             publisherTV = itemView.findViewById(R.id.idTVpublisher);
             pageCountTV = itemView.findViewById(R.id.idTVPageCount);
             dateTV = itemView.findViewById(R.id.idTVDate);
+            favoriteBTN = itemView.findViewById(R.id.idBtnFavorite);
         }
     }
 }

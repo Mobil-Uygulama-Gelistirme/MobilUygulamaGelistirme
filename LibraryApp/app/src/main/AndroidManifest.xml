@@ -13,6 +13,9 @@
         android:supportsRtl="true"
         android:theme="@style/Theme.AppCompat.NoActionBar">
         <activity
+            android:name=".FavoriActivity"
+            android:exported="false" />
+        <activity
             android:name=".BookDetailsActivity"
             android:exported="false" />
         <activity

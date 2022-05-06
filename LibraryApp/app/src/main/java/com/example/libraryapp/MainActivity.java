@@ -1,14 +1,20 @@
 package com.example.libraryapp;
 
+import android.app.Activity;
+import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.MenuItem;
 import android.view.View;
 import android.webkit.ConsoleMessage;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ProgressBar;
 import android.widget.Toast;
 
+import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -19,6 +25,7 @@ import com.android.volley.Response;
 import com.android.volley.VolleyError;
 import com.android.volley.toolbox.JsonObjectRequest;
 import com.android.volley.toolbox.Volley;
+import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import org.json.JSONArray;
 import org.json.JSONException;
@@ -34,6 +41,8 @@ public class MainActivity extends AppCompatActivity {
     private ProgressBar progressBar;
     private EditText searchEdt;
     private ImageButton searchBtn;
+    private ImageButton favoriteEkleBtn;
+    private Button favoriBtn;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +52,10 @@ public class MainActivity extends AppCompatActivity {
         progressBar = findViewById(R.id.idLoadingPB);
         searchEdt = findViewById(R.id.idEdtSearchBooks);
         searchBtn = findViewById(R.id.idBtnSearch);
+        favoriteEkleBtn = findViewById(R.id.idBtnFavorite);
+        favoriBtn = findViewById(R.id.favoriBtn);
+
+        searchBtn.setBackgroundColor(Color.TRANSPARENT);
 
         searchBtn.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +69,17 @@ public class MainActivity extends AppCompatActivity {
                 getBooksInfo(searchEdt.getText().toString());
             }
         });
+
+        favoriBtn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent i = new Intent(MainActivity.this, FavoriActivity.class);
+
+
+                startActivity(i);
+            }
+        });
+
     }
 
     private void getBooksInfo(String query) {

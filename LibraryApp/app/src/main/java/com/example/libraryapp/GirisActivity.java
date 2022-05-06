@@ -2,7 +2,9 @@ package com.example.libraryapp;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
@@ -10,6 +12,9 @@ import android.widget.EditText;
 import android.widget.Toast;
 
 public class GirisActivity extends AppCompatActivity {
+
+    private SharedPreferences preferences;
+    private SharedPreferences.Editor editor;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -19,6 +24,9 @@ public class GirisActivity extends AppCompatActivity {
         Button btn_giris = findViewById(R.id.giris_btn);
         EditText KullaniciAdi=findViewById(R.id.username);
         EditText Sifre=findViewById(R.id.password);
+
+
+        preferences = this.getSharedPreferences("com.example.libraryapp", Context.MODE_PRIVATE);
 
         btn_giris.setOnClickListener(new View.OnClickListener()
         {
@@ -33,7 +41,10 @@ public class GirisActivity extends AppCompatActivity {
                 if (sonuc==1)
                 {
                     Intent i = new Intent(GirisActivity.this, MainActivity.class);
-                    i.putExtra("kullaniciAd", kad);
+
+                    editor = preferences.edit();
+                    editor.putString("kullaniciAd", kad);
+                    editor.apply();
 
                     startActivity(i);
                     finish();
