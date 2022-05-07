@@ -37,8 +37,7 @@ public class GirisActivity extends AppCompatActivity {
                 String sifre=Sifre.getText().toString();
 
                 SQLLite db = new SQLLite(GirisActivity.this);
-                int sonuc=db.KullaniciKontrol(kad,sifre);//eğer kullanıcı var ise 1 dönecek yok ise 0
-                if (sonuc==1)
+                if (db.KullaniciKontrol(kad,sifre)==1)
                 {
                     Intent i = new Intent(GirisActivity.this, MainActivity.class);
 

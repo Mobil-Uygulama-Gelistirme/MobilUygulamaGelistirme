@@ -43,8 +43,7 @@ public class KayitOlActivity extends AppCompatActivity {
                 {
                     SQLLite db = new SQLLite(KayitOlActivity.this);
 
-                    int sonuc=db.KullaniciKontrol(kullaniciAdi,sifre);
-                    if (sonuc==0)
+                    if (db.KullaniciVarMi(kullaniciAdi)==0)
                     {
                         db.KullaniciEkle(kullaniciAdi,sifre);
                         Toast.makeText(getApplicationContext(), "Kayıt işlemi başarılı", Toast.LENGTH_SHORT).show();
@@ -53,7 +52,7 @@ public class KayitOlActivity extends AppCompatActivity {
                         finish();
                     }
                     else
-                        Toast.makeText(getApplicationContext(), "Kayıt işlemi başarısız", Toast.LENGTH_SHORT).show();
+                        Toast.makeText(getApplicationContext(), "Kullanıcı adı sistemde kayıtlı. Lütfen başka bir kullanıcı adı giriniz ", Toast.LENGTH_SHORT).show();
                 }
             }
         });

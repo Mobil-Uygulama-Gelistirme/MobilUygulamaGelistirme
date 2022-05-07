@@ -44,12 +44,28 @@ public class SQLLite extends SQLiteOpenHelper
         {
             String selectQuery = "SELECT  * FROM " + TABLE_USERS + " Where " + ROW_USERNAME + "='"+ KullaniciAdi + "' and " + ROW_SIFRE + "='" + Sifre+"'";
             Cursor cursor = db.rawQuery(selectQuery,null);
-            cursor.moveToFirst();
             if (cursor.getCount()>0)
-                sonuc=1;
+                sonuc = 1;
             cursor.close();
         }catch (Exception e){
-            sonuc=-1;
+            sonuc = -1;
+        }
+        db.close();
+        return sonuc;
+    }
+    public int KullaniciVarMi(String KullaniciAdi)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int sonuc=0;
+        try
+        {
+            String selectQuery = "SELECT  * FROM " + TABLE_USERS + " Where " + ROW_USERNAME + "='"+ KullaniciAdi + "'";
+            Cursor cursor = db.rawQuery(selectQuery,null);
+            if (cursor.getCount()>0)
+                sonuc= 1;
+            cursor.close();
+        }catch (Exception e){
+            sonuc= -1;
         }
         db.close();
         return sonuc;

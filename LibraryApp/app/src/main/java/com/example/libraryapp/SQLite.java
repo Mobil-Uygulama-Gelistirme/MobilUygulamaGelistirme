@@ -50,6 +50,23 @@ public class SQLite extends SQLiteOpenHelper
         db.close();
     }
 
+    public int KitapKayitliMi(String KitapAdi,String KullaniciAdi)
+    {
+        SQLiteDatabase db = this.getReadableDatabase();
+        int sonuc=0;
+        try
+        {
+            String selectQuery = "SELECT  * FROM " + TABLE_KUTUPHANE + " Where " + ROW_USERNAME + "='"+ KullaniciAdi + "' AND "+ ROW_KITAP +"='" + KitapAdi +"'";
+            Cursor cursor = db.rawQuery(selectQuery,null);
+            if (cursor.getCount()>0)
+                sonuc= 1;
+        }catch(Exception e){
+            sonuc=-1;
+        }
+        db.close();
+        return sonuc;
+    }
+
     public ArrayList<String> KitapGetir(String KullaniciAdi){
         ArrayList<String> kitaplar = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
