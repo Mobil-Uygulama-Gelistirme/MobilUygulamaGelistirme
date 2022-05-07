@@ -21,7 +21,7 @@
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_weight="4"
-            android:hint="Aramak İstediğiniz Kitabın İsmini Giriniz" />
+            android:hint="Kitap İsmi Giriniz" />
 
         <ImageButton
             android:id="@+id/idBtnSearch"
@@ -36,7 +36,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="0.8"
-        android:orientation="horizontal">
+        android:orientation="vertical">
 
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/idRVBooks"
@@ -45,7 +45,7 @@
 
         <ProgressBar
             android:id="@+id/idLoadingPB"
-            android:layout_width="wrap_content"
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:visibility="gone" />
 

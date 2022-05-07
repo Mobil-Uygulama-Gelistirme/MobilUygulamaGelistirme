@@ -1,17 +1,24 @@
 package com.example.libraryapp;
+import static android.content.Context.NOTIFICATION_SERVICE;
+
+import android.app.NotificationManager;
+import android.app.PendingIntent;
 import android.content.Context;
 import android.content.Intent;
 import android.content.SharedPreferences;
-import android.database.sqlite.SQLiteDatabase;
+import android.media.RingtoneManager;
+import android.net.Uri;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.TextView;
+import android.app.Notification;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.core.app.NotificationCompat;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.squareup.picasso.Picasso;
@@ -60,17 +67,21 @@ public class BookAdapter extends RecyclerView.Adapter<BookAdapter.BookViewHolder
             }
         });
 
-        //preferences = mcontext.getSharedPreferences("com.example.libraryapp", Context.MODE_PRIVATE);
-        //String data = preferences.getString("kullaniciAd", "Bilinmiyor");
+        preferences = mcontext.getSharedPreferences("com.example.libraryapp", Context.MODE_PRIVATE);
+        String data = preferences.getString("kullaniciAd", "Bilinmiyor");
 
         holder.favoriteBTN.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Toast.makeText(mcontext.getApplicationContext(), bookInfo.getTitle(),Toast.LENGTH_SHORT).show();
+                SQLite sqlLite = new SQLite(mcontext.getApplicationContext());
+                sqlLite.KitapEkle(bookInfo.getTitle(), data);
+
+                Toast.makeText(mcontext.getApplicationContext(),
+                          bookInfo.getTitle() + " kitabı favorilere eklendi.", Toast.LENGTH_SHORT).show();
+
             }
         });
     }
-
     @Override
     public int getItemCount() {
         return bookInfoArrayList.size();
